@@ -1,0 +1,27 @@
+{
+  "name": "graphtest-client",
+  "version": "1.0.0",
+  "description": "graphtest-client",
+  "nodejs":true,
+  "keywords": [
+    "node webkit",
+    "MBT"
+  ],
+  "dependencies": {
+    "cookie": "^0.1.2",
+    "async": "2.1.2",
+    "express": "^4.12.4",
+    "body-parser": "^1.12.4",
+    "connect-flash": "^0.1.1",
+    "chromedriver": "2.27.2",
+    "jwebdriver": "2.0.8",
+    "request": "^2.34.0"
+  },
+  "main": "app/index.html",
+  "window": {
+    "icon": "app/favicon.png",
+    "toolbar": false,
+    "width":480,
+    "height":600
+  }
+}
