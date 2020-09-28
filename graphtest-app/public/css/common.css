@@ -1,0 +1,230 @@
+/*
+.navbar {
+    margin-bottom: 0px;
+}
+*/
+
+
+/*自定义导航样式*/
+
+.navbar-custom {
+    background-color: #F8F8F8;
+    border-color: #E7E7E7;
+    margin-bottom: 0px;
+}
+
+
+/*自定义导航样式 title*/
+
+.navbar-custom. navbar-brand {
+    color: #777;
+}
+
+.navbar-custom. navbar-brand:hover,
+.navbar-custom. navbar-brand:focus {
+    color: #5E5E5E;
+}
+
+
+/*自定义导航样式 link*/
+
+.navbar-custom. navbar-nav>li>a {
+    color: #777;
+}
+
+.navbar-custom. navbar-nav>li>a:hover,
+.navbar-custom. navbar-nav>li>a:focus {
+    color: #333;
+}
+
+.navbar-custom. navbar-nav>. active>a,
+.navbar-custom. navbar-nav>. active>a:hover,
+.navbar-custom. navbar-nav>. active>a:focus {
+    color: #555;
+    background-color: #E7E7E7;
+}
+
+.navbar-custom. navbar-nav>. open>a,
+.navbar-custom. navbar-nav>. open>a:hover,
+.navbar-custom. navbar-nav>. open>a:focus {
+    color: #555;
+    background-color: #D5D5D5;
+}
+
+
+/*自定义导航样式 caret */
+
+.navbar-custom. navbar-nav>. dropdown>a. caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+
+.navbar-custom. navbar-nav>. dropdown>a:hover. caret,
+.navbar-custom. navbar-nav>. dropdown>a:focus. caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+
+.navbar-custom. navbar-nav>. open>a. caret,
+.navbar-custom. navbar-nav>. open>a:hover. caret,
+.navbar-custom. navbar-nav>. open>a:focus. caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
+
+
+/* 自定义导航样式 mobile version */
+
+.navbar-custom. navbar-toggle {
+    border-color: #DDD;
+}
+
+.navbar-custom. navbar-toggle:hover,
+.navbar-custom. navbar-toggle:focus {
+    background-color: #DDD;
+}
+
+.navbar-custom. navbar-toggle. icon-bar {
+    background-color: #CCC;
+}
+
+@media (max-width: 767px) {
+    . navbar-custom. navbar-nav. open. dropdown-menu>li>a {
+        color: #777;
+    }
+    . navbar-custom. navbar-nav. open. dropdown-menu>li>a:hover,
+    . navbar-custom. navbar-nav. open. dropdown-menu>li>a:focus {
+        color: #333;
+    }
+}
+
+.left-header{
+    margin-top: 51px;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 20rem;
+    height: 3rem;
+    background: #f9f9f9;
+    border-bottom: 1px solid #d7d7d7;
+    border-right: 1px solid #d7d7d7;
+}
+
+.left-tree-new{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 87px;
+    overflow-x: auto;
+    overflow-y: auto;
+    background: #f9f9f9;
+    background-clip: content-box;
+    display: block;
+    min-height: 100%;
+    width: 20rem;
+    border-right: 1px solid #d7d7d7;
+}
+
+.top {
+    border-bottom: 1px solid #ddd;
+    margin-top: 51px;
+    position: fixed;
+    width: 100%;
+    min-width: 600px;
+    z-index: 999;
+    background-color: #fff;
+    display: inline-block;
+}
+
+.title {
+    font-size: 15px;
+    line-height: 34px;
+    font-weight: normal;
+    min-width: 200px;
+    display: inline-block;
+    width: 100%;
+    padding-left: 15px;
+}
+
+.btn-group {
+    min-width: 400px;
+    margin-right: -38px;
+    float: right;
+}
+
+.left-tree {
+    border-right: 1px solid #ddd;
+    position: fixed;
+    top: 85px;
+    bottom: 0;
+    left: 0;
+    width: 18%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.content {
+    /*            border-left: 1px solid #ddd;*/
+    float: right;
+    width: 82%;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 86px;
+}
+
+.location-indicator {
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+
+.right {
+    float: right;
+}
+
+.fileUpload1,
+.fileUpload2 {
+    padding: 0px 10px;
+}
+
+.content-block {
+    background-color: #fafafa;
+}
+
+.chartIcon {
+    width: 36px;
+    height: 36px;
+    margin-left: -10px;
+    background-color: #3175b0;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 18px;
+}
+
+.chartTitle {
+    font-size: 18px;
+    font-family: 'microsoft yahei';
+}
+
+.fa-table {
+    color: #fff;
+    font-size: 20px;
+    padding: 8px 0 0 8px
+}
+
+#productLineChart {
+    background-color: #ffffff;
+    height: 420px;
+}
+
+.ztree li span.button.linkjs {
+    margin-left: 2px;
+    margin-right: -1px;
+/*    background-position: -144px 0;*/
+    background-image: url("../vendor/css/zTreeStyle/img/diy/9.png");
+    vertical-align: top;
+}

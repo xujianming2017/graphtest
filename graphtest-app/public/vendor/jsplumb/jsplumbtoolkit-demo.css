@@ -1,0 +1,117 @@
+body {
+	padding: 0px; height: 100%; color: rgb(67, 67, 67); font-family: "Lato", sans-serif; font-size: 14px; font-weight: 400; background-color: rgb(255, 255, 255);
+}
+.jtk-bootstrap {
+	display: flex; min-height: 100vh; flex-direction: column;
+}
+.jtk-bootstrap .jtk-page-container {
+	flex:1 1 0px; width: 100vw; display: flex; justify-content: center;
+}
+.jtk-bootstrap .jtk-container {
+	width: 60%; max-width: 800px;
+}
+.jtk-bootstrap-wide .jtk-container {
+	width: 80%; max-width: 1187px;
+}
+.jtk-demo-main {
+	margin-top: 0px; position: relative;padding-right: 10px;
+}
+.jtk-demo-main .description {
+	padding: 13px; font-size: 13px; margin-top: 25px; margin-bottom: 22px; background-color: rgb(244, 245, 239);
+}
+.jtk-demo-main .description li {
+	list-style-type: disc !important;
+}
+.jtk-demo-canvas {
+	border: 1px solid rgb(204, 204, 204); border-image: none; height: 515px; display: flex; max-height: 700px; background-color: white;
+}
+.canvas-wide {
+	margin-left: 0px;
+}
+.miniview {
+	top: 25px; right: 25px; position: absolute; z-index: 100;
+}
+.jtk-demo-dataset {
+	text-align: left; overflow: auto; max-height: 600px;
+}
+.demo-title {
+	font-size: 18px; float: left;
+}
+.controls {
+	left: 25px; top: 25px; color: rgb(255, 255, 255); margin-right: 10px; position: absolute; z-index: 1;
+}
+.controls i {
+	padding: 4px; border-radius: 4px; margin-right: 0px; cursor: pointer; background-color: rgb(62, 126, 156);
+}
+li {
+	list-style-type: none;
+}
+.sidebar {
+	margin: 0px; padding: 7px 10px 0px 0px; width: 150px; height: 550px; text-align: center; float: left; background-color: rgb(132, 172, 179);
+}
+.sidebar ul li {
+	padding: 8px; border-radius: 11px; width: 128px; color: rgb(247, 235, 202); margin-bottom: 10px; margin-left: 6px; cursor: move; background-color: rgb(35, 75, 94);
+}
+.sidebar ul {
+	padding: 0px; width: 100%;
+}
+.sidebar ul li:hover {
+	background-color: rgb(87, 122, 139);
+}
+.sidebar i {
+	float: left;
+}
+@media all and (max-width:600px)
+{
+.sidebar {
+	width: 100%; height: 55px; padding-top: 0px; float: none;
+}
+.sidebar ul li {
+	width: 67px; margin-top: 7px; display: inline-block;
+}
+.jtk-demo-canvas {
+	height: 364px; margin-top: 10px; margin-left: 0px;
+}
+}
+.jtk-connector {
+	z-index: 9;
+}
+.jtk-endpoint {
+	z-index: 12; cursor: pointer; opacity: 0.8;
+}
+.jtk-overlay {
+	padding: 4px; color: rgb(67, 67, 67); font-weight: 400; z-index: 10; background-color: white;
+}
+.jtk-hover.jtk-overlay {
+	color: rgb(67, 67, 67);
+}
+path {
+	cursor: pointer;
+}
+.delete {
+	padding: 2px; line-height: 20px; font-size: 10px; float: left; cursor: pointer;
+}
+.add {
+	padding: 2px; line-height: 20px; font-size: 10px; margin-right: 2px; float: right; cursor: pointer;
+}
+.edit {
+	padding: 2px; line-height: 20px; font-size: 10px; margin-right: 2px; float: right; cursor: pointer;
+}
+.edit:hover {
+	color: rgb(255, 128, 0);
+}
+.selected-mode {
+	color: rgb(228, 240, 19);
+}
+.connect {
+	width: 10px; height: 10px; right: 5px; bottom: 13px; position: absolute; background-color: rgb(247, 98, 88);
+}
+.demo-links {
+	top: 57px; right: 0px; text-transform: uppercase; padding-right: 10px; padding-left: 5px; font-size: 11px; position: fixed; z-index: 100001; opacity: 0.8; background-color: white;
+}
+.demo-links div {
+	margin-right: 7px; margin-left: 7px; display: inline;
+}
+.demo-links i {
+	padding: 4px;
+}
