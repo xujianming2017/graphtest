@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>图测工程</title>
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="vendor/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" href="vendor/jsplumb/css.css">
+    <link rel="stylesheet" href="vendor/jsplumb/jsplumbtoolkit-defaults.css">
+    <link rel="stylesheet" href="vendor/jsplumb/jsplumbtoolkit-demo.css">
+    <link rel="stylesheet" href="vendor/jsplumb/app.css">
+    <link rel="stylesheet" href="css/common.css" />
+
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/jquery/jquery.ztree.core.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/vendor/jsplumb/jsplumb.js"></script>
+    <script src="/vendor/jsplumb/jsplumbtoolkit.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/project.js"></script>
+</head>
+
+<body>
+    <!-- 头部导航 -->
+    {% include "layouts/header.html"%}
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 左侧tree和工程bar -->
+            {% include "layouts/sidebar.html"%}
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 location-indicator">
+                            <span>当前位置: <a href="/">图测</a></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="jtk-container">
+                            <div class="jtk-demo-main">
+                                <!-- canvas -->
+                                <div class="jtk-demo-canvas canvas-wide flowchart-demo jtk-surface jtk-surface-nopan" id="canvas">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="
+    padding-top: 12px;padding-right: 10px;">
+                            <button id="btn-show-model-editor" class="btn btn-primary right">编辑图例</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--编辑遮罩层-->
+    <div class="modal" id="modal-model-editor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="nodeId">新节点:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="nodeId" placeholder="新节点名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="fromNodeId">起始点:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="fromNodeId" placeholder="起始节点名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="fromEdgeId">入边:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="fromEdgeId" placeholder="入边名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="toNodeId">终止点:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="toNodeId" placeholder="终止点名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="toEdgeId">出边:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="toEdgeId" placeholder="出边名称">
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="update-model">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

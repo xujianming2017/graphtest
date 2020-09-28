@@ -1,0 +1,101 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" />
+    
+</head>
+
+<body>
+    <div class="content">
+        {% include "../layouts/header.html"%} 
+        {% include "../project.html"%}
+ 
+    </div>
+    
+    <script type="text/javascript">
+        $('input[id=fileUpload1]').change(function () {
+            $(this).closest(".form-group").find("input[type=text]").val($(this).val());
+        });
+
+        $('input[id=fileUpload2]').change(function () {
+            $(this).closest(".form-group").find("input[type=text]").val($(this).val());
+        });
+
+        var setting = {
+            view: {
+                showLine: false
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            }
+        };
+
+        var zNodes = [
+            {
+                id: 1,
+                pId: 0,
+                name: "测试用例集合目录",
+                open: true
+                },
+            {
+                id: 11,
+                pId: 1,
+                name: "京东"
+                },
+            {
+                id: 111,
+                pId: 11,
+                name: "start-汽车产品页"
+                },
+            {
+                id: 112,
+                pId: 11,
+                name: "start-数码产品页"
+                },
+            {
+                id: 12,
+                pId: 1,
+                name: "pop"
+                },
+            {
+                id: 121,
+                pId: 12,
+                name: "天河之音"
+                },
+            {
+                id: 1211,
+                pId: 121,
+                name: "天河之音测试用例1"
+                },
+            {
+                id: 1212,
+                pId: 121,
+                name: "天河之音测试用例2"
+                },
+            {
+                id: 1213,
+                pId: 121,
+                name: "天河之音测试用例3"
+                },
+            {
+                id: 1214,
+                pId: 121,
+                name: "天河之音测试用例4"
+                },
+		];
+
+        $(document).ready(function () {
+            $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        });
+
+        console.log($(".case-content textarea").val());
+    </script>
+</body>
+
+</html>-->

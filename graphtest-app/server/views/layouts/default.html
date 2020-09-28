@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>图测</title>
+
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <style>
+        .navbar {
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-static-top navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">图测</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                {% if isAuthenticated %}
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/home">模型管理<span class="sr-only"></span></a>
+                    </li>
+                    <!--<li><a href="/home">工作区 <span class="sr-only">(current)</span></a></li>-->
+                    <!--<li><a href="/api">接口服务 <span class="sr-only">(current)</span></a></li>-->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">帮助</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.name}} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/logout">退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/logout">注销</a></li>
+                </ul>-->
+                {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/login">登录</a></li>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!--
+    {% for message in messages %}
+    <div class="alert alert-dismissible alert-{{ message.type }}">
+        <button type="button" class="close" data-dismiss="alert">&times;</button> {{ message.message }}
+    </div>
+    {% endfor %} 
+-->
+    {# content块的内容占位 #} {% block content %}{% endblock %}
+</body>
+
+</html>

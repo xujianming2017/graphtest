@@ -1,0 +1,121 @@
+
+
+{#
+    继承默认页面内容
+#}
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <h1>API服务列表</h1>
+
+    <div class="container">
+
+        <div class="col-md-4">
+
+            <ul>
+                <li><a href="/api/user" class="apilink">/api/user 获取所有用户信息</a> </li>
+                <li><a href="/api/user/query" class="apilink">/api/user/query 查询用户信息</a> </li>
+                <li><a href="/api/user/getModelList" class="apilink">/api/user/getModelList 获取用户模型信息</a> </li>
+
+                <li><a href="/api/model/create" class="apilink">/api/model/create 模型信息创建</a> </li>
+                <li><a href="/api/model/update" class="apilink">/api/model/update 模型信息更新</a> </li>
+                <li><a href="/api/model/get" class="apilink">/api/model/get 模型信息获取</a> </li>
+                <li><a href="/api/model/delete" class="apilink">/api/model/delete 模型信息删除</a> </li>
+                <li><a href="/api/model/getVetexEdge" class="apilink">/api/model/getVetexEdge 获取模型所有节点和边</a> </li>
+                <li><a href="/api/model/addVetexEdge" class="apilink">/api/model/addVetexEdge 添加节点和边</a> </li>
+
+
+                <li><a href="/api/script/create" class="apilink">/api/script/create 脚本信息创建</a> </li>
+                <li><a href="/api/script/update" class="apilink">/api/script/update 脚本信息更新</a> </li>
+                <li><a href="/api/script/get" class="apilink">/api/script/get 脚本信息获取</a> </li>
+                <li><a href="/api/script/delete" class="apilink">/api/script/delete 脚本信息删除</a> </li>
+
+
+                <li><a href="/api/param/create">/api/param/create 参数信息创建</a> </li>
+                <li><a href="/api/param/update">/api/param/update 参数信息更新</a> </li>
+                <li><a href="/api/param/get">/api/param/get 参数信息获取</a> </li>
+                <li><a href="/api/param/delete">/api/param/delete 参数信息删除</a> </li>
+
+                <li><a href="/api/variable/create">/api/variable/create 变量信息创建</a> </li>
+                <li><a href="/api/variable/update">/api/variable/update 变量信息更新</a> </li>
+                <li><a href="/api/variable/get">/api/variable/get 变量信息获取</a> </li>
+                <li><a href="/api/variable/delete">/api/variable/delete 变量信息删除</a> </li>
+
+                <li><a href="/api/path/generate" class="apilink">/api/path/generate 生成路径信息</a> </li>
+                <li><a href="/api/path/create" class="apilink">/api/path/create 路径信息创建</a> </li>
+                <li><a href="/api/path/update" class="apilink">/api/path/update 路径信息更新</a> </li>
+                <li><a href="/api/path/get" class="apilink">/api/path/get 路径信息获取</a> </li>
+                <li><a href="/api/path/delete" class="apilink">/api/path/delete 路径信息删除</a> </li>
+                <li><a href="/api/path/getJsScript" class="apilink">/api/path/getJsScript 获取路径关联脚本</a> </li>
+
+                <li><a href="/api/case/create">/api/case/create 用例信息创建</a> </li>
+                <li><a href="/api/case/update">/api/case/update 用例信息更新</a> </li>
+                <li><a href="/api/case/get">/api/case/get 用例信息获取</a> </li>
+                <li><a href="/api/case/delete">/api/case/delete 用例信息删除</a> </li>
+
+                <li><a href="/api/scenario/create" class="apilink">/api/scenario/create 场景信息创建</a> </li>
+                <li><a href="/api/scenario/update" class="apilink">/api/scenario/update 场景信息更新</a> </li>
+                <li><a href="/api/scenario/get" class="apilink">/api/scenario/get 场景信息获取</a> </li>
+                <li><a href="/api/scenario/delete" class="apilink">/api/scenario/delete 场景信息删除</a> </li>
+                <li><a href="/api/scenario/getCaseList" class="apilink">/api/scenario/delete 场景用例列表删除</a> </li>
+
+                <li><a href="/api/invoke/run">/api/invoke/run 执行（场景/用例）</a> </li>
+                <li><a href="/api/invoke/result">/api/invoke/result 获取执行结果（场景/用例）</a> </li>
+                <li><a href="/api/invoke/result">/api/invoke/create 新增执行结果（场景/用例）</a> </li>
+                <li><a href="/api/invoke/result">/api/invoke/update 更新执行结果（场景）</a> </li>
+
+                <li><a href="/api/folder/appendChild" class="apilink">/api/folder/appendChild 子目录创建</a> </li>
+                <li><a href="/api/folder/tree/path" class="apilink">/api/folder/tree/path 查询用户的路径目录树</a> </li>
+                <li><a href="/api/folder/tree/scenario" class="apilink">/api/folder/tree/scenario 查询用户的场景目录树</a> </li>
+
+
+
+                <li><a href="/api/folder/create" class="apilink">/api/folder/create 目录创建</a> </li>
+                <li><a href="/api/folder/update" class="apilink">/api/folder/update 目录更新</a> </li>
+                <li><a href="/api/folder/get" class="apilink">/api/folder/get 目录获取</a> </li>
+                <li><a href="/api/folder/delete" class="apilink">/api/folder/delete 目录删除</a> </li>
+
+            </ul>
+
+
+        </div>
+
+        <div class="col-md-8">
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div>
+                        <p>参照接口文档，在下方输入JSON参数报文内容：</p>
+                        <textarea class="text-success" name="jsonStr" id="jsonStr" style="width:400px;height: 600px"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div>
+                        <p>接口调用结果：</p>
+                        <textarea class="text-success" name="jsonRel" id="jsonRel" style="width:400px;height: 600px">{}</textarea>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+<script  type="text/javascript" src="/js/controllers/apiController.js"></script>
+<script  type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+<script  type="text/javascript" src="/vendor/bootstrap.min.js"></script>
+
+{% endblock %}
+

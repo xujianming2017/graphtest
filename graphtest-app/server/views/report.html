@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>测试报告</title>
+
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/jquery/jquery.ztree.core.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/controllers/reportController.js"></script>
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="vendor/css/zTreeStyle/zTreeStyle.css"/>
+    <link rel="stylesheet" href="vendor/font-awesome-4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/common.css"/>
+</head>
+
+<body>
+{% include "layouts/header.html"%}
+
+<script>
+    $(document).on('click', '[data-action]', function () {
+        queryScenarioHistory(this);
+    })
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- 左侧tree和工程bar -->
+        {% include "layouts/sidebar.html"%}
+        <div class="col-md-10 content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 location-indicator">
+                        <span>当前位置: <a href="/">图测</a> > 执行</span>
+                    </div>
+                </div>
+
+                <div class="panel content-block">
+                    <div class="panel-heading">
+                        <span class="chartIcon"><i class="fa fa-table" aria-hidden="true"></i></span>
+                        <span class="chartTitle">测试场景执行历史</span>
+                    </div>
+                    <div class="panel-body">
+                        <table id="scenarioHistory" class="table table-bordered table-condensed table-hover">
+                            <tr>
+                                <th>编号</th>
+                                <th>执行起始时间</th>
+                                <th>执行结束时间</th>
+                                <th>耗时</th>
+                                <th>执行环境</th>
+                                <th>报告</th>
+                            </tr>
+
+                            <!--<script>-->
+                            <!--appendScenarioTableMock();-->
+                            <!--</script>-->
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel content-block">
+                    <div class="panel-heading">
+                        <span class="chartIcon"><i class="fa fa-table" aria-hidden="true"></i></span>
+                        <span class="chartTitle">测试用例执行历史</span>
+                    </div>
+
+                    <div class="panel-body">
+                        <!--请求测试场景中测试用例的执行历史，并展示-->
+                        <table id="caseHistory" class="table table-bordered table-condensed table-hover">
+                            <tr>
+                                <th>用例ID</th>
+                                <th>执行起始时间</th>
+                                <th>执行结束时间</th>
+                                <th>耗时</th>
+                                <th>结果</th>
+                                <th>日志</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:50%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" 
+                            aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        日志详情  
+                    </h4>
+                </div>
+                <div class="modal-body" style="max-height: 63vmin; overflow-y:auto; min-height: 63vmin;">
+                    
+                </div>
+                <div class="modal-footer">
+                    <div align="left" style="float:left">
+                        <p class="glyphicon glyphicon-ok" style="color:green">:Pass</p>
+                        <p class="glyphicon glyphicon-remove" style="color:red; margin-left:5px">:Fail</p>
+                         <p class="glyphicon glyphicon-time" style="color:blue; margin-left:5px">:Pending</p>
+                        <p class="glyphicon glyphicon-question-sign" style="color:brown; margin-left:5px">:Unkown</p>
+                    </div>
+                    <button type="button" class="btn btn-default" 
+                            data-dismiss="modal">关闭
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!--编辑遮罩层-->
+    <div class="modal" id="caseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <textarea class="form-control col-md-10" rows="25">
+                        <graph id="G" edgedefault="directed">
+                            <node id="n0">
+                                <data key="node-name">start</data>
+                            </node>
+                            <node id="n1">
+                                <data key="node-name">首页</data>
+                            </node>
+                            <node id="n2">
+                                <data key="node-name">end</data>
+                            </node>
+                            <edge source="n0" target="n1">
+                                <data key="edge-name">打开网址</data>
+                            </edge>
+                            <edge source="n1" target="n2">
+                                <data key="edge-name">退出动作</data>
+                            </edge>
+                        </graph>
+                    </textarea>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
