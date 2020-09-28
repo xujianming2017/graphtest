@@ -1,0 +1,216 @@
+.jtk-node {
+	position: absolute;
+}
+.jtk-group {
+	overflow: visible; position: absolute;
+}
+[jtk-group-content] {
+	position: relative;
+}
+.jtk-drag.jtk-node {
+	
+}
+.jtk-surface {
+	overflow: hidden !important; position: relative; cursor: move; touch-action: none;
+}
+.jtk-surface-panning {
+	-ms-user-select: none; -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-touch-callout: none; -khtml-user-select: none;
+}
+.jtk-surface-canvas {
+	overflow: visible !important;
+}
+.jtk-surface-droppable-node {
+	touch-action: none;
+}
+.jtk-surface-nopan {
+	overflow: scroll !important; cursor: default;
+}
+.jtk-surface-tile {
+	margin: 0px; border: currentColor; transition:opacity 0.3s 0.15s; border-image: none; -webkit-transition: opacity .3s ease .15s; -o-transition: opacity .3s ease .15s; -moz-transition: opacity .3s ease .15s;
+}
+.jtk-lasso {
+	border: 2px solid rgb(49, 119, 184); border-image: none; display: none; position: absolute; z-index: 20000; opacity: 0.5; background-color: whitesmoke;
+}
+.jtk-lasso-select-defeat * {
+	-ms-user-select: none; -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-touch-callout: none; -khtml-user-select: none;
+}
+.jtk-lasso-mask {
+	left: 0px; top: 0px; right: 0px; bottom: 0px; display: none; position: fixed; z-index: 20000; opacity: 0.5; background-color: rgb(7, 35, 78);
+}
+.jtk-surface-selected-element {
+	border: 2px dashed rgb(247, 98, 88) !important; border-image: none !important;
+}
+.jtk-surface-pan {
+	transition:background-color 0.15s ease-in; text-align: center; z-index: 2; cursor: pointer; opacity: 0.4; background-color: azure; -webkit-transition: background-color 0.15s ease-in; -o-transition: background-color 0.15s ease-in; -moz-transition: background-color 0.15s ease-in;
+}
+.jtk-surface-pan-top {
+	width: 100%; height: 20px;
+}
+.jtk-surface-pan-bottom {
+	width: 100%; height: 20px;
+}
+.jtk-surface-pan-top:hover {
+	color: white; font-weight: bold; opacity: 0.6; background-color: rgb(49, 119, 184);
+}
+.jtk-surface-pan-bottom:hover {
+	color: white; font-weight: bold; opacity: 0.6; background-color: rgb(49, 119, 184);
+}
+.jtk-surface-pan-left:hover {
+	color: white; font-weight: bold; opacity: 0.6; background-color: rgb(49, 119, 184);
+}
+.jtk-surface-pan-right:hover {
+	color: white; font-weight: bold; opacity: 0.6; background-color: rgb(49, 119, 184);
+}
+.jtk-surface-pan-left {
+	width: 20px; height: 100%; line-height: 40;
+}
+.jtk-surface-pan-right {
+	width: 20px; height: 100%; line-height: 40;
+}
+.jtk-surface-pan-active {
+	background-color: rgb(247, 98, 88);
+}
+.jtk-surface-pan-active:hover {
+	background-color: rgb(247, 98, 88);
+}
+.jtk-miniview {
+	border-radius: 4px; border: 1px solid rgb(226, 230, 205); border-image: none; width: 125px; height: 125px; overflow: hidden !important; position: relative; opacity: 0.8; background-color: rgb(178, 201, 205);
+}
+.jtk-miniview-panner {
+	border: 5px dotted whitesmoke; border-image: none; cursor: move; opacity: 0.4; background-color: rgb(79, 111, 126);
+}
+.jtk-miniview-panning {
+	
+}
+.jtk-miniview-element {
+	position: absolute; background-color: rgb(96, 122, 134);
+}
+.jtk-miniview-group-element {
+	background: none; border: 2px solid rgb(96, 122, 134); border-image: none;
+}
+.jtk-miniview-collapse {
+	top: -1px; right: 3px; color: whitesmoke; font-size: 18px; font-weight: bold; position: absolute; cursor: pointer;
+}
+.jtk-miniview-collapse::before {
+	content: "\2012";
+}
+.jtk-miniview-collapsed {
+	padding: 4px; border-radius: 4px; width: 21px; height: 22px; margin-right: 0px; background-color: rgb(68, 158, 166);
+}
+.jtk-miniview-collapsed .jtk-miniview-element {
+	visibility: hidden;
+}
+.jtk-miniview-collapsed .jtk-miniview-panner {
+	visibility: hidden;
+}
+.jtk-miniview-collapsed .jtk-miniview-collapse::before {
+	content: "+";
+}
+.jtk-miniview-collapse:hover {
+	color: rgb(228, 240, 19);
+}
+.jtk-dialog-underlay {
+	left: 0px; top: 0px; right: 0px; bottom: 0px; display: none; position: fixed; z-index: 100000; opacity: 0.8; background-color: rgb(204, 204, 204);
+}
+.jtk-dialog-overlay {
+	padding: 7px; overflow: hidden; font-family: "Open Sans", sans-serif; display: none; position: fixed; z-index: 100001; box-shadow: 0px 0px 5px gray; background-color: white;
+}
+.jtk-dialog-overlay-x {
+	transition:max-height 0.5s ease-in; max-height: 0px; -webkit-transition: max-height 0.5s ease-in; -o-transition: max-height 0.5s ease-in; -moz-transition: max-height 0.5s ease-in;
+}
+.jtk-dialog-overlay-y {
+	transition:max-width 0.5s ease-in; max-width: 0px; -webkit-transition: max-width 0.5s ease-in; -o-transition: max-width 0.5s ease-in; -moz-transition: max-width 0.5s ease-in;
+}
+.jtk-dialog-overlay-top {
+	top: 20px;
+}
+.jtk-dialog-overlay-bottom {
+	bottom: 20px;
+}
+.jtk-dialog-overlay-left {
+	left: 20px;
+}
+.jtk-dialog-overlay-right {
+	right: 20px;
+}
+.jtk-dialog-overlay-visible.jtk-dialog-overlay-x {
+	max-height: 1000px;
+}
+.jtk-dialog-overlay-visible.jtk-dialog-overlay-y {
+	max-width: 1000px;
+}
+.jtk-dialog-buttons {
+	text-align: right; margin-top: 5px;
+}
+.jtk-dialog-button {
+	outline: rgb(204, 204, 204) solid 1px; border: currentColor; border-image: none; margin-right: 5px; cursor: pointer; min-width: 56px; background-color: white;
+}
+.jtk-dialog-button:hover {
+	color: white; background-color: rgb(35, 75, 94);
+}
+.jtk-dialog-title {
+	text-align: left; font-size: 14px; margin-bottom: 9px;
+}
+.jtk-dialog-content {
+	margin: 0px 14px; text-align: left; font-size: 12px; min-width: 250px;
+}
+.jtk-dialog-content ul {
+	width: 100%; padding-left: 0px;
+}
+.jtk-dialog-content label {
+	font-weight: inherit; cursor: pointer;
+}
+.jtk-dialog-overlay input {
+	padding: 6px 4px; border: 1px solid rgb(204, 204, 204); border-image: none; color: rgb(51, 51, 51); font-size: 14px; font-style: normal; margin-right: 6px; background-color: rgb(255, 255, 255);
+}
+.jtk-dialog-overlay textarea {
+	padding: 6px 4px; border: 1px solid rgb(204, 204, 204); border-image: none; color: rgb(51, 51, 51); font-size: 14px; font-style: normal; margin-right: 6px; background-color: rgb(255, 255, 255);
+}
+.jtk-dialog-overlay input:focus {
+	border: 1px solid rgb(131, 184, 168); border-image: none; color: rgb(51, 51, 51); font-size: 14px; font-style: normal; background-color: rgb(203, 234, 225);
+}
+.jtk-dialog-overlay textarea:focus {
+	border: 1px solid rgb(131, 184, 168); border-image: none; color: rgb(51, 51, 51); font-size: 14px; font-style: normal; background-color: rgb(203, 234, 225);
+}
+.jtk-draw-skeleton {
+	outline: rgb(132, 172, 179) solid 2px; left: 0px; top: 0px; right: 0px; bottom: 0px; position: absolute; opacity: 0.8;
+}
+.jtk-draw-handle {
+	width: 7px; height: 7px; position: absolute; background-color: rgb(132, 172, 179);
+}
+.jtk-draw-handle-tl {
+	left: 0px; top: 0px; cursor: nw-resize;
+}
+.jtk-draw-handle-tr {
+	top: 0px; right: 0px; cursor: ne-resize;
+}
+.jtk-draw-handle-bl {
+	left: 0px; bottom: 0px; cursor: sw-resize;
+}
+.jtk-draw-handle-br {
+	right: 0px; bottom: 0px; cursor: se-resize;
+}
+.jtk-draw-drag {
+	left: 50%; top: 50%; width: 20px; height: 20px; margin-top: -10px; margin-left: -10px; display: none; position: absolute; cursor: move; background-color: rgb(132, 172, 179);
+}
+.jtk-drag-select-defeat * {
+	-ms-user-select: none; -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-touch-callout: none; -khtml-user-select: none;
+}
+.jtk-bezier-handle {
+	border-radius: 50%; width: 15px; height: 15px; z-index: 10; cursor: move; background-color: darkcyan;
+}
+.jtk-bezier-handle-secondary {
+	cursor: default; background-color: lightgreen;
+}
+.jtk-bezier-handle-secondary-source {
+	background-color: lavenderblush;
+}
+.jtk-bezier-guideline {
+	position: absolute;
+}
+.jtk-bezier-guideline path {
+	stroke: darkcyan; stroke-linewidth: 3;
+}
+.jtk-connection-edit path {
+	stroke-dasharray: 2,2;
+}

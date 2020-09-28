@@ -1,0 +1,122 @@
+<!--
+<div class="top">
+    <span class="title">工程名：京东网站自动化</span>
+    <div class="filter-group btn-group right">
+        <a href="javascript:void(0);" class="btn btn-default" target="_blank">
+            <span class="glyphicon text-muted glyphicon-cog"></span>
+            <span> </span>
+            <span>关联</span>
+        </a>
+        <a href="javascript:void(0);" class="btn btn-default">
+            <span class="glyphicon text-muted glyphicon-cog"></span>
+            <span> </span>
+            <span>调试</span>
+        </a>
+        <a href="/design" class="btn btn-default">
+            <span class="glyphicon text-muted glyphicon-cog"></span>
+            <span> </span>
+            <span>设计</span>
+        </a>
+        <a href="/execution" class="btn btn-default">
+            <span class="glyphicon text-muted glyphicon-cog"></span>
+            <span> </span>
+            <span>执行</span>
+        </a>
+        <a href="/report" class="btn btn-default">
+            <span class="glyphicon text-muted glyphicon-cog"></span>
+            <span> </span>
+            <span>报告</span>
+        </a>
+    </div>
+</div>
+-->
+
+<!--
+<div class="left-sidebar">
+    <div class="left-header">
+        <div class="title">
+            <span>模型名：<a id="model-name" href="/home">京东网站自动化</a></span>
+        </div>
+    </div>
+    <div class="left-tree">
+        <ul id="tree" class="ztree"></ul>
+    </div>
+</div>
+-->
+
+<div class="left-tree">
+    <ul id="tree" class="ztree"></ul>
+</div>
+
+<!--
+<script>
+    var setting = {
+        view: {
+            showLine: false
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        }
+    };
+
+    var zNodes = [
+        {
+            id: 1,
+            pId: 0,
+            name: "测试用例集合目录",
+            open: true
+                },
+        {
+            id: 11,
+            pId: 1,
+            name: "京东"
+                },
+        {
+            id: 111,
+            pId: 11,
+            name: "start-汽车产品页"
+                },
+        {
+            id: 112,
+            pId: 11,
+            name: "start-数码产品页"
+                },
+        {
+            id: 12,
+            pId: 1,
+            name: "pop"
+                },
+        {
+            id: 121,
+            pId: 12,
+            name: "天河之音"
+                },
+        {
+            id: 1211,
+            pId: 121,
+            name: "天河之音测试用例1"
+                },
+        {
+            id: 1212,
+            pId: 121,
+            name: "天河之音测试用例2"
+                },
+        {
+            id: 1213,
+            pId: 121,
+            name: "天河之音测试用例3"
+                },
+        {
+            id: 1214,
+            pId: 121,
+            name: "天河之音测试用例4"
+                },
+		];
+
+    $(document).ready(function () {
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+    });
+    
+</script>-->

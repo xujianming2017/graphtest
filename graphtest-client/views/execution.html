@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>用例执行</title>
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="vendor/css/zTreeStyle/zTreeStyle.css" />
+    <link rel="stylesheet" href="vendor/font-awesome-4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-table/bootstrap-editable.css">
+    <link rel="stylesheet" href="css/common.css" />
+
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/jquery/jquery.ztree.core.min.js"></script>
+    <script src="/vendor/jquery/jquery.ztree.exedit.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/vendor/bootstrap-table.min.js"></script>
+    <script src="/vendor/bootstrap-table/bootstrap-editable.js"></script>
+    <script src="/vendor/bootstrap-table/bootstrap-table-editable.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/graphtest.testdata.js"></script>
+    <script src="/js/execution.js"></script>
+
+    <!--
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+-->
+    <!--    <link rel="stylesheet" href="E:/workspace/nodejs/develop/graphtest-app/public/vendor/font-awesome-4.5.0/css/font-awesome.min.css">-->
+</head>
+
+<body>
+    <!-- 头部导航 -->
+    {% include "layouts/header.html"%}
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 左侧tree和工程bar -->
+            {% include "layouts/sidebar.html"%}
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4 location-indicator">
+                            <span>当前位置: <a href="/">图测</a> > 执行</span>
+                        </div>
+                    </div>
+
+                    <div class="panel content-block">
+                        <div class="panel-heading">
+                            <span class="chartIcon"><i class="fa fa-table" aria-hidden="true"></i></span>
+                            <span class="chartTitle">测试场景</span>
+                            <div class="right">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalScenarioEditor" data-operation="new">新增</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalScenarioEditor" data-operation="edit">编辑</button>
+                                <button type="button" class="btn btn-success" id="btnExecScenario">执行</button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">场景名称</label>
+                                    <div class="col-sm-3">
+                                        <input class="form-control" type="text" id="scenario-name"/>
+                                        <input class="form-control" type="hidden" id="scenario-id" value=""/>
+                                    </div>
+<!--
+                                    <div class="col-sm-6">
+                                        <button type="button" class="btn btn-primary" id="btnExecuteScenario">开始执行</button>
+                                                                                <button type="button" class="btn btn-primary">历史结果</button>
+                                    </div>
+-->
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">描述</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" rows="1" id="scenario-desc"></textarea>
+                                    </div>
+                                </div>
+<!--
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">执行设置</label>
+
+                                    <label class="radio-inline"><input type="radio" name="optradio" checked>本地执行</label>
+                                    <label class="radio-inline"><input type="radio" name="optradio">远程执行</label>
+                                    <label class="radio-inline"><input type="radio" name="optradio">持续集成</label>
+
+                                </div>
+-->
+                            </form>
+                        </div>
+                    </div>
+                    <div class="panel content-block">
+                        <div class="panel-heading">
+                            <span class="chartIcon"><i class="fa fa-table" aria-hidden="true"></i></span>
+                            <span class="chartTitle">用例列表</span>
+                            <div class="right">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCaseListEditor">编辑</button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table id="tbl-case-list" class="table table-bordered table-condensed table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>编号</th>
+                                        <th>名称</th>
+                                        <th>类型</th>
+                                        <th>执行数据</th>
+                                       <!-- <th>跳过执行</th>-->
+                                    </tr>
+                                </thead>
+                                <!--
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>path1</td>
+                                        <td>用例</td>
+                                        <td>
+                                            <input type="checkbox" name="" checked="true">
+                                        </td>
+                                        
+                                    <td>
+                                        <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#testingDataModal"><i class="glyphicon glyphicon-edit"></i></button>
+                                        <button type="button" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+                                    </td>
+
+
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>京东</td>
+                                        <td>用例集</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                        
+                                    <td>
+                                        <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#testingDataModal"><i class="glyphicon glyphicon-edit"></i></button>
+                                        <button type="button" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+                                    </td>
+
+                                    </tr>
+                                </tbody>
+-->
+                            </table>
+
+                        </div>
+                    </div>
+
+                    <!--
+                    <div class="panel content-block">
+                        <div class="panel-heading">
+                            <span class="chartIcon"><i class="fa fa-table" aria-hidden="true"></i></span>
+                            <span class="chartTitle">用例列表</span>
+                            <div class="right">
+                                <button class="btn default">编辑</button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+
+                            <table class="table table-bordered table-condensed table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>编号</th>
+                                        <th>名称</th>
+                                        <th>类型</th>
+                                        <th>跳过执行</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>path1</td>
+                                        <td>用例</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>京东</td>
+                                        <td>用例集</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>path1</td>
+                                        <td>用例</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>京东</td>
+                                        <td>用例集</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>path1</td>
+                                        <td>用例</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>京东</td>
+                                        <td>用例集</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>path1</td>
+                                        <td>用例</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>京东</td>
+                                        <td>用例集</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>path1</td>
+                                        <td>用例</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>京东</td>
+                                        <td>用例集</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>path1</td>
+                                        <td>用例</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>京东</td>
+                                        <td>用例集</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>path1</td>
+                                        <td>用例</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>京东</td>
+                                        <td>用例集</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>path1</td>
+                                        <td>用例</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>京东</td>
+                                        <td>用例集</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>path1</td>
+                                        <td>用例</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>京东</td>
+                                        <td>用例集</td>
+                                        <td>
+                                            <input type="checkbox" name="">
+                                        </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+-->
+                    <!--
+                    <div class="panel content-block">
+                        <div class="panel-heading">
+                            <span class="chartIcon"><i class="fa fa-table" aria-hidden="true"></i></span>
+                            <span class="chartTitle">用例</span>
+                            <div class="right">
+                                <button class="btn default">执行</button>
+                                                            <button class="btn default">数据</button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2">用例名称</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2">用例脚本</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control" rows="10">
+var webdriver = require('selenium-webdriver');
+
+var driver = new webdriver.Builder().
+   withCapabilities(webdriver.Capabilities.chrome()).
+   build();
+ 
+driver.get('http://www.google.com');
+driver.findElement(webdriver.By.name('q')).sendKeys('simple programmer');
+driver.findElement(webdriver.By.name('btnG')).click();
+driver.quit();
+                                        </textarea>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="button" class="btn btn-primary">导出</button>
+                                    </div>
+
+
+                                </div>
+                            </form>
+
+                            
+                                    <div class="form-group">
+                                        <div class="col-sm-6">
+                                            <button type="button" class="btn btn-success">执行</button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#testingDataModal">数据</button>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--测试数据遮罩层-->
+    <div class="modal" id="testingDataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn btn-default btn-sm">外部数据文件导入</button>
+                    <h4 class="modal-title">测试数据</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="table">
+                        <table class="table table-condensed table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>url</th>
+                                    <th>username</th>
+                                    <th>password</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>www.jd.com</td>
+                                    <td>张三</td>
+                                    <td>123456</td>
+                                    <td>
+                                        <button type="button" class="btn btn-default glyphicon glyphicon-remove btn-xs"></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>www.jd.com</td>
+                                    <td>李四</td>
+                                    <td>123456</td>
+                                    <td>
+                                        <button type="button" class="btn btn-default glyphicon glyphicon-remove btn-xs"></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm">新增</button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  新增和编辑测试场景基本信息  -->
+    <div class="modal fade" id="modalScenarioEditor" tabindex="-1" role="dialog" aria-labelledby="modalScenarioEditorLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">编辑测试场景</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">场景名称</label>
+                            <div class="col-sm-7">
+                                <input class="form-control" type="text" id="modal-scenario-name"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">描述</label>
+                            <div class="col-sm-7">
+                                <textarea class="form-control" rows="1" id="modal-scenario-desc"></textarea>
+                            </div>
+                        </div>
+<!--
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">执行设置</label>
+                            <div class="radio col-sm-7">
+                                <label><input type="radio" name="optradio" checked>本地执行</label>
+                                <label><input type="radio" name="optradio">远程执行</label>
+                                <label><input type="radio" name="optradio">持续集成</label>
+                            </div>
+                        </div>
+-->
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="btnSaveScenario">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  编辑用例列表  -->
+    <div class="modal fade" id="modalCaseListEditor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">编辑用例列表</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid" style="padding: 5px;">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <select multiple class="form-control" id="modal-all-paths" style="padding: 0px;
+        height: 300px;">
+                                </select>
+                            </div>
+                            <!--
+                            <div class="col-sm-5" style="padding: 0px,5px;
+        height: 300px;border: 1px solid #ddd;">
+                                <ul id="modal-tree-paths" class="ztree"></ul>
+                            </div>
+-->
+                            <div class="col-sm-2">
+                                <button id="btn-add-path" class="btn btn-default" style="
+    margin-left: 18px;
+">></button>
+                                <br>
+                                <button id="btn-remove-path" class="btn btn-default" style="
+    margin-left: 18px;
+"><</button>
+                            </div>
+                            <div class="col-sm-5">
+                                <select multiple class="form-control" id="modal-sel-paths" style="padding: 0px;
+        height: 300px;">
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveCaseList">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  用例信息  -->
+    <div class="modal" id="modalCaseInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">用例信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-4">用例名称</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="modal-case-name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">用例脚本</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" rows="10" id="modal-case-script">
+var webdriver = require('selenium-webdriver');
+
+var driver = new webdriver.Builder().
+   withCapabilities(webdriver.Capabilities.chrome()).
+   build();
+ 
+driver.get('http://www.google.com');
+driver.findElement(webdriver.By.name('q')).sendKeys('simple programmer');
+driver.findElement(webdriver.By.name('btnG')).click();
+driver.quit();
+                                        </textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+<!--                        <button type="button" class="btn btn-primary">执行用例</button>-->
+                        <button type="button" class="btn btn-primary">导出脚本</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--  用例数据列表  -->
+    <div class="modal fade" id="modalCaseDataEditor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">测试用例执行数据</h4>
+                    <div class="form-group">
+
+                        <label>测试用例名称：</label>
+                        <span  class="modal-case-name"/>
+
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid" style="padding: 5px;">
+
+                        <div class="row graphtest-testdata">
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveScenarioCaseData">保存</button>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
