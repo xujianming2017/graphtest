@@ -1,0 +1,32 @@
+{
+  "name": "graphtest",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^1.0.0",
+    "body-parser": "^1.12.4",
+    "bookshelf": "^0.8.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.3.5",
+    "cookie-session": "^1.1.0",
+    "crypto": "^0.0.3",
+    "express": "^4.12.4",
+    "express-validator": "^2.10.0",
+    "jsonwebtoken": "^7.3.0",
+    "knex": "^0.8.6",
+    "mysql": "^2.6.2",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
+    "serve-static": "^1.9.3",
+    "swig": "^1.4.2",
+    "underscore": "^1.8.3",
+    "view-helpers": "^0.1.5",
+    "xmldom": "^0.1.27"
+  },
+  "engines": {
+    "node": "4.2.1"
+  }
+}
